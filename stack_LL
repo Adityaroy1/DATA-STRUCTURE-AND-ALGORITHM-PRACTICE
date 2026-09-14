@@ -1,0 +1,78 @@
+#include <iostream>
+
+using namespace std;
+struct node {
+	node* next;
+	int value;
+};
+class stack {
+private:
+	node* top=nullptr;
+	int size=0;
+public:
+	void push() {
+		int val;
+		cout<<"enter the value"<<endl;
+		cin>>val;
+		node* temp=new node;
+		temp -> next=top;
+		temp-> value=val;
+		top=temp;
+		size++;
+	}
+	void pop() {
+	    if(size=0){
+	        cout<<"stack underflow"<<endl;
+	    }
+		else{
+		node* temp=top;
+		top=top->next;
+		delete temp;
+		size--;
+		}
+	}
+	void view_size() {
+		cout<<size<<endl;
+	}
+	void view_top() {
+	    if(size=0){
+	        cout<<"stack underflow"<<endl;
+	    }
+		else{
+		  cout<<"top element is: "<<top->value<<endl;}
+	}
+};
+int main() {
+	stack s1;
+	int choice=0;
+	do {
+		cout<<"------------------------"<<endl;
+		cout<<"1 for push"<<endl;
+		cout<<"2 for pop"<<endl;
+		cout<<"3 for top"<<endl;
+		cout<<"4 for size"<<endl;
+		cout<<"5 for end"<<endl;
+		cout<<"------------------------"<<endl;
+		cin>>choice;
+		switch(choice) {
+		case 1:
+			s1.push();
+			break;
+		case 2:
+			s1.pop();
+			break;
+		case 3:
+			s1.view_top();
+			break;
+		case 4:
+			s1.view_size();
+			break;
+		case 5:
+			cout<<"ty"<< endl;
+			break;
+		default:
+			cout<<"error";
+		}
+	} while(choice!=5);
+	return 0;
+}
